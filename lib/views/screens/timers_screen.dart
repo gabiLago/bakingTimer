@@ -1,5 +1,5 @@
 import 'package:baking_timer/main.dart';
-import 'package:baking_timer/models/intervals_timer_model.dart';
+import 'package:baking_timer/models/timer_model.dart';
 import 'package:baking_timer/models/timers_data.dart';
 import 'package:baking_timer/utils/localized_strings.dart';
 import 'package:baking_timer/views/screens/add_timer_screen.dart';

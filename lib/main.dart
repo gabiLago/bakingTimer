@@ -1,5 +1,6 @@
 import 'package:baking_timer/views/screens/add_timer_screen.dart';
 import 'package:baking_timer/views/screens/timers_screen.dart';
+import 'package:baking_timer/views/utils/theme_data.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'models/timers_data.dart';
@@ -13,7 +14,7 @@ class BakingTimer extends StatelessWidget {
     return ChangeNotifierProvider(
       create: (context) => TimersData(),
       child: MaterialApp(
-        theme: ThemeData.dark(),
+        theme: themeData,
         home: TimersScreen(),
         initialRoute: TimersScreen.id,
         routes: {

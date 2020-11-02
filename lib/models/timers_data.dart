@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:collection';
-import 'package:baking_timer/models/intervals_timer_model.dart';
+import 'package:baking_timer/models/timer_model.dart';
 
 class TimersData extends ChangeNotifier {
   final List<Timer> _timers = <Timer>[

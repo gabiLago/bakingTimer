@@ -1,9 +1,9 @@
-import 'package:baking_timer/models/intervals_timer_model.dart';
+import 'package:baking_timer/models/timer_model.dart';
 import 'package:baking_timer/models/timers_data.dart';
 import 'package:baking_timer/utils/localized_strings.dart';
 import 'package:baking_timer/views/screens/timers_screen.dart';
-import 'package:baking_timer/views/widgets/timer_name_card.dart';
-import 'package:baking_timer/views/widgets/timer_settings_card.dart';
+import 'package:baking_timer/views/widgets/create_edit_timers/timer_name_card.dart';
+import 'package:baking_timer/views/widgets/create_edit_timers/timer_settings_card.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../main.dart';
