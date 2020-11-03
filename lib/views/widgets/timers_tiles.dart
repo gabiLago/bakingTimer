@@ -1,19 +1,19 @@
 import 'package:baking_timer/main.dart';
-import 'package:baking_timer/models/timer_model.dart';
+import 'package:baking_timer/models/intervals_periodic_timer_model.dart';
 import 'package:baking_timer/utils/localized_strings.dart';
 import 'package:baking_timer/views/utils/style_and_decoration.dart';
 import 'package:baking_timer/views/widgets/show_timers/timer_card_activity_duration.dart';
 import 'package:baking_timer/views/widgets/show_timers/timer_card_interval_separator.dart';
 import 'package:baking_timer/views/widgets/show_timers/timer_card_name_repeats_row.dart';
 import 'package:baking_timer/views/widgets/show_timers/timer_card_pause_duration.dart';
-import 'package:baking_timer/views/widgets/create_edit_timers/timer_start_stop.dart';
+import 'package:baking_timer/views/widgets/show_timers/timer_card_start_stop.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class TimersTile extends StatelessWidget {
   final String currentLanguage = BakingTimer.currentLanguage;
 
-  final Timer timerData;
+  final IntervalsPeriodicTimer timerData;
   TimersTile({this.timerData});
 
   @override
@@ -33,7 +33,9 @@ class TimersTile extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 10.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              crossAxisAlignment: CrossAxisAlignment.end,
+              crossAxisAlignment: timerData.timerState == TimerState.stop
+                  ? CrossAxisAlignment.end
+                  : CrossAxisAlignment.start,
               children: <Widget>[
                 TimerCardActivityDuration(
                   timerData: timerData,
@@ -41,12 +43,13 @@ class TimersTile extends StatelessWidget {
                 ),
                 TimerCardIntervalSeparator(
                   currentLanguage: currentLanguage,
+                  timerData: timerData,
                 ),
                 TimerCardPauseDuration(
                   timerData: timerData,
                   currentLanguage: currentLanguage,
                 ),
-                TimerStartStop(),
+                TimerStartStop(timerData: timerData),
               ],
             ),
           ),

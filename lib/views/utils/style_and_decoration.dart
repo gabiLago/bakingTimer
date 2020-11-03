@@ -21,11 +21,6 @@ TextStyle kRepeatsStyle = TextStyle(
   fontSize: 28.0,
 );
 
-TextStyle kBigIntervalStyle(context) => TextStyle(
-      fontSize: 12.0,
-      color: Theme.of(context).accentColor,
-    );
-
 TextStyle kTimerNameStyle = TextStyle(
   fontSize: 16.0,
   color: Colors.grey[50],

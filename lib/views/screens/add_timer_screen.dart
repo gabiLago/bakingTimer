@@ -1,5 +1,5 @@
-import 'package:baking_timer/models/timer_model.dart';
-import 'package:baking_timer/models/timers_data.dart';
+import 'package:baking_timer/models/intervals_periodic_timer_model.dart';
+import 'package:baking_timer/models/intervals_periodic_timers_data.dart';
 import 'package:baking_timer/utils/localized_strings.dart';
 import 'package:baking_timer/views/screens/timers_screen.dart';
 import 'package:baking_timer/views/widgets/create_edit_timers/timer_name_card.dart';
@@ -73,7 +73,7 @@ class _AddTimerScreenState extends State<AddTimerScreen> {
       resizeToAvoidBottomPadding: false,
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Timer newTimer = Timer(
+          IntervalsPeriodicTimer newTimer = IntervalsPeriodicTimer(
               timerName: _textFieldController.text,
               activityDuration: timerDuration,
               pauseDuration: pauseDuration,
