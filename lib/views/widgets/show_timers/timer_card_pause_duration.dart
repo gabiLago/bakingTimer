@@ -1,5 +1,5 @@
 import 'package:baking_timer/models/intervals_periodic_timer_model.dart';
-import 'package:baking_timer/utils/localized_strings.dart';
+import 'package:baking_timer/localization/localized_strings.dart';
 import 'package:flutter/material.dart';
 
 class TimerCardPauseDuration extends StatelessWidget {

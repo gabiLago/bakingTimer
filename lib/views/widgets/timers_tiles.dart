@@ -1,6 +1,6 @@
 import 'package:baking_timer/main.dart';
 import 'package:baking_timer/models/intervals_periodic_timer_model.dart';
-import 'package:baking_timer/utils/localized_strings.dart';
+import 'package:baking_timer/localization/localized_strings.dart';
 import 'package:baking_timer/views/utils/style_and_decoration.dart';
 import 'package:baking_timer/views/widgets/show_timers/timer_card_activity_duration.dart';
 import 'package:baking_timer/views/widgets/show_timers/timer_card_interval_separator.dart';

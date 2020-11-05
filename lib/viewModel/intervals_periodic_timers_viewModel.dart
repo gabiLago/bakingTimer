@@ -16,7 +16,7 @@ class TimersData extends ChangeNotifier {
       pauseDuration: 15,
       numberOfRepeats: 4,
       timerName: 'Probando con dos dígitos',
-      timerState: TimerState.running,
+      timerState: TimerState.stop,
     )
   ];
 

@@ -1,8 +1,9 @@
 import 'package:baking_timer/main.dart';
 import 'package:baking_timer/models/intervals_periodic_timer_model.dart';
-import 'package:baking_timer/models/intervals_periodic_timers_data.dart';
-import 'package:baking_timer/utils/localized_strings.dart';
+import 'package:baking_timer/viewModel/intervals_periodic_timers_viewModel.dart';
+import 'package:baking_timer/localization/localized_strings.dart';
 import 'package:baking_timer/views/screens/add_timer_screen.dart';
+import 'package:baking_timer/views/screens/other_screen.dart';
 import 'package:baking_timer/views/widgets/timers_tiles.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -28,7 +29,7 @@ class TimersScreen extends StatelessWidget {
             icon: const Icon(Icons.tune),
             tooltip: 'Edit Timers',
             onPressed: () {
-              Navigator.pushNamed(context, AddTimerScreen.id);
+              Navigator.pushNamed(context, OtherScreen.id);
             },
           ),
         ],
