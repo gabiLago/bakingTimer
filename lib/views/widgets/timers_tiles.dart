@@ -1,20 +1,15 @@
-import 'package:baking_timer/main.dart';
-import 'package:baking_timer/models/intervals_periodic_timer_model.dart';
-import 'package:baking_timer/localization/localized_strings.dart';
+import 'package:baking_timer/models/serial_timer_model.dart';
 import 'package:baking_timer/views/utils/style_and_decoration.dart';
-import 'package:baking_timer/views/widgets/show_timers/timer_card_activity_duration.dart';
-import 'package:baking_timer/views/widgets/show_timers/timer_card_interval_separator.dart';
+import 'package:baking_timer/views/widgets/show_timers/timer_action_button.dart';
+import 'package:baking_timer/views/widgets/show_timers/timer_card_description.dart';
 import 'package:baking_timer/views/widgets/show_timers/timer_card_name_repeats_row.dart';
-import 'package:baking_timer/views/widgets/show_timers/timer_card_pause_duration.dart';
-import 'package:baking_timer/views/widgets/show_timers/timer_card_start_stop.dart';
+import 'package:baking_timer/views/widgets/show_timers/timer_countdown.dart';
+import 'package:baking_timer/views/widgets/show_timers/timer_data_row.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class TimersTile extends StatelessWidget {
-  final String currentLanguage = BakingTimer.currentLanguage;
-
-  final IntervalsPeriodicTimer timerData;
-  TimersTile({this.timerData});
+  final SerialTimer timer;
+  TimersTile({this.timer});
 
   @override
   Widget build(BuildContext context) {
@@ -24,35 +19,19 @@ class TimersTile extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 7.5),
-            decoration: kNameAndRepeatesDecoration(context),
-            child: TimerCardNameAndRepeatsRow(timerData: timerData),
+          Row(
+            children: [
+              Expanded(child: TimerCardDescription(timer)),
+              RepeatsData(timer),
+            ],
           ),
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 10.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              crossAxisAlignment: timerData.timerState == TimerState.stop
-                  ? CrossAxisAlignment.end
-                  : CrossAxisAlignment.start,
-              children: <Widget>[
-                TimerCardActivityDuration(
-                  timerData: timerData,
-                  currentLanguage: currentLanguage,
-                ),
-                TimerCardIntervalSeparator(
-                  currentLanguage: currentLanguage,
-                  timerData: timerData,
-                ),
-                TimerCardPauseDuration(
-                  timerData: timerData,
-                  currentLanguage: currentLanguage,
-                ),
-                TimerStartStop(timerData: timerData),
-              ],
-            ),
-          ),
+          Row(
+            children: [
+              TimerDataRow(timer),
+              if (timer.timerState != TimerState.idle) TimerCountDown(timer),
+              TimerActionButton(timer),
+            ],
+          )
         ],
       ),
     );

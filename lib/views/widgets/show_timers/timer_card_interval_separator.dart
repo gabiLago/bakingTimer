@@ -1,28 +1,26 @@
-import 'package:baking_timer/models/intervals_periodic_timer_model.dart';
+import 'package:baking_timer/models/serial_timer_model.dart';
 import 'package:baking_timer/localization/localized_strings.dart';
+import 'package:baking_timer/viewModel/serial_timer_viewModel.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class TimerCardIntervalSeparator extends StatelessWidget {
-  const TimerCardIntervalSeparator(
-      {@required this.currentLanguage, this.timerData});
+  const TimerCardIntervalSeparator(this.timer);
 
-  final String currentLanguage;
-  final IntervalsPeriodicTimer timerData;
+  final SerialTimer timer;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      alignment: Alignment.center,
-      padding: timerData.timerState == TimerState.stop
-          ? EdgeInsets.symmetric(vertical: 30.0)
-          : EdgeInsets.symmetric(horizontal: 4.0),
-      child: Expanded(
-        child: Text(
-          timerData.timerState == TimerState.stop
-              ? localizedValues[currentLanguage]['interval']
-              : '/',
-          style: Theme.of(context).textTheme.headline3,
-        ),
+    String currentLanguage =
+        Provider.of<SerialTimerViewModel>(context).getCurrentLanguage();
+
+    return Expanded(
+      flex: 1,
+      child: Text(
+        timer.timerState == TimerState.idle
+            ? localizedValues[currentLanguage]['interval']
+            : '/',
+        style: Theme.of(context).textTheme.headline3,
       ),
     );
   }

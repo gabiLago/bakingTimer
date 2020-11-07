@@ -1,12 +1,11 @@
-import 'package:baking_timer/models/intervals_periodic_timer_model.dart';
-import 'package:baking_timer/viewModel/intervals_periodic_timers_viewModel.dart';
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:baking_timer/models/serial_timer_model.dart';
+import 'package:baking_timer/viewModel/serial_timer_viewModel.dart';
 import 'package:baking_timer/localization/localized_strings.dart';
 import 'package:baking_timer/views/screens/timers_screen.dart';
 import 'package:baking_timer/views/widgets/create_edit_timers/timer_name_card.dart';
 import 'package:baking_timer/views/widgets/create_edit_timers/timer_settings_card.dart';
-import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import '../../main.dart';
 
 enum CardActivities { timer, pause, repeats }
 enum CardActions { plus, minus }
@@ -19,7 +18,6 @@ class AddTimerScreen extends StatefulWidget {
 }
 
 class _AddTimerScreenState extends State<AddTimerScreen> {
-  final String currentLanguage = BakingTimer.currentLanguage;
   final _textFieldController = TextEditingController();
 
   int timerDuration = 0;
@@ -69,17 +67,20 @@ class _AddTimerScreenState extends State<AddTimerScreen> {
 
   @override
   Widget build(BuildContext context) {
+    String currentLanguage =
+        Provider.of<SerialTimerViewModel>(context).getCurrentLanguage();
     return Scaffold(
       resizeToAvoidBottomPadding: false,
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          IntervalsPeriodicTimer newTimer = IntervalsPeriodicTimer(
+          SerialTimer newTimer = SerialTimer(
               timerName: _textFieldController.text,
               activityDuration: timerDuration,
               pauseDuration: pauseDuration,
               numberOfRepeats: repeats);
 
-          Provider.of<TimersData>(context, listen: false).addTimer(newTimer);
+          Provider.of<SerialTimerViewModel>(context, listen: false)
+              .addTimer(newTimer);
           Navigator.pushNamed(context, TimersScreen.id);
         },
         tooltip: 'Show me the value!',

@@ -1,6 +1,4 @@
-import 'package:baking_timer/main.dart';
-import 'package:baking_timer/models/intervals_periodic_timer_model.dart';
-import 'package:baking_timer/viewModel/intervals_periodic_timers_viewModel.dart';
+import 'package:baking_timer/viewModel/serial_timer_viewModel.dart';
 import 'package:baking_timer/localization/localized_strings.dart';
 import 'package:baking_timer/views/screens/add_timer_screen.dart';
 import 'package:baking_timer/views/screens/other_screen.dart';
@@ -10,10 +8,11 @@ import 'package:provider/provider.dart';
 
 class TimersScreen extends StatelessWidget {
   static const String id = 'timers_sceen';
-  final String currentLanguage = BakingTimer.currentLanguage;
 
   @override
   Widget build(BuildContext context) {
+    String currentLanguage =
+        Provider.of<SerialTimerViewModel>(context).getCurrentLanguage();
     return Scaffold(
       appBar: AppBar(
         title: Text(localizedValues[currentLanguage]['title']),
@@ -37,9 +36,10 @@ class TimersScreen extends StatelessWidget {
       body: Container(
         child: SafeArea(
           child: ListView.builder(
-            itemCount: Provider.of<TimersData>(context).timersCount(),
+            itemCount: Provider.of<SerialTimerViewModel>(context).timersCount(),
             itemBuilder: (BuildContext context, int index) {
-              final timer = Provider.of<TimersData>(context).timers[index];
+              final timer =
+                  Provider.of<SerialTimerViewModel>(context).timers[index];
               return Dismissible(
                 key: Key(timer.timerName),
                 confirmDismiss: (DismissDirection direction) async {
@@ -69,7 +69,7 @@ class TimersScreen extends StatelessWidget {
                 },
                 // Show a red background as the item is swiped away.
                 background: Container(color: Colors.red),
-                child: TimersTile(timerData: timer),
+                child: TimersTile(timer: timer),
               );
             },
           ),
