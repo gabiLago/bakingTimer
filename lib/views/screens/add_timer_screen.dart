@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:baking_timer/models/serial_timer_model.dart';
+import 'package:baking_timer/models/intervals_timer_model.dart';
 import 'package:baking_timer/viewModel/serial_timer_viewModel.dart';
 import 'package:baking_timer/localization/localized_strings.dart';
 import 'package:baking_timer/views/screens/timers_screen.dart';
@@ -73,11 +73,8 @@ class _AddTimerScreenState extends State<AddTimerScreen> {
       resizeToAvoidBottomPadding: false,
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          SerialTimer newTimer = SerialTimer(
-              timerName: _textFieldController.text,
-              activityDuration: timerDuration,
-              pauseDuration: pauseDuration,
-              numberOfRepeats: repeats);
+          IntervalsTimer newTimer = IntervalsTimer(
+              timerName: _textFieldController.text, intervalsTarget: repeats);
 
           Provider.of<SerialTimerViewModel>(context, listen: false)
               .addTimer(newTimer);
