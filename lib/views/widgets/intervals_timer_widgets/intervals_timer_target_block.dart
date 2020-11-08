@@ -9,7 +9,7 @@ class IntervalsTimerTargets extends StatelessWidget {
   const IntervalsTimerTargets({this.intervalsTimer, this.countdownTimer});
 
   final IntervalsTimer intervalsTimer;
-  final CountdownTimerNeeded countdownTimer;
+  final CountdownNeeded countdownTimer;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class IntervalsTimerTargets extends StatelessWidget {
         children: <Widget>[
           Container(
             child: Text(
-              countdownTimer == CountdownTimerNeeded.activity
+              countdownTimer == CountdownNeeded.activity
                   ? '${intervalsTimer.activityTimer.duration}'
                   : '${intervalsTimer.waitingTimer.duration}',
               style: intervalsTimer.getIntervalsTimerState() == TimerState.idle

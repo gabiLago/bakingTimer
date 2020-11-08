@@ -8,7 +8,7 @@ class IntervalsTimer {
   final int intervalsTarget;
   final CountdownTimer activityTimer;
   final CountdownTimer waitingTimer;
-  CountdownTimerNeeded _countdownTimerNeeded = CountdownTimerNeeded.activity;
+  CountdownNeeded _countdownTimerNeeded = CountdownNeeded.activity;
   int _count = 0;
   TimerState _timerState = TimerState.idle;
   Timer timer;
@@ -23,18 +23,17 @@ class IntervalsTimer {
   void incrementIntervalsCount() => _count++;
   void updateIntervalsTimerState(TimerState timerState) =>
       _timerState = timerState;
-  void updateCountdownTimerNeededOnInterval(CountdownTimerNeeded timerNeeded) =>
+  void updateWhichCountdownNeeded(CountdownNeeded timerNeeded) =>
       _countdownTimerNeeded = timerNeeded;
-  void cancelIntervalsTimer() => timer.cancel();
+  void stopIntervalsTimer() => timer.cancel();
 
   int getIntervalsCount() => _count;
   TimerState getIntervalsTimerState() => _timerState;
-  CountdownTimer getCountdownTimerOnInterval() {
-    return _countdownTimerNeeded == CountdownTimerNeeded.activity
+  CountdownTimer getCountdownTimerNeeded() {
+    return _countdownTimerNeeded == CountdownNeeded.activity
         ? activityTimer
         : waitingTimer;
   }
 
-  CountdownTimerNeeded getCountdownTimerNeededOnInterval() =>
-      _countdownTimerNeeded;
+  CountdownNeeded getWhichCountdownNeeded() => _countdownTimerNeeded;
 }

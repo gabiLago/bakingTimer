@@ -4,8 +4,8 @@ import 'package:baking_timer/models/intervals_timer_model.dart';
 import 'package:baking_timer/viewModel/serial_timer_viewModel.dart';
 import 'package:baking_timer/localization/localized_strings.dart';
 import 'package:baking_timer/views/screens/timers_screen.dart';
-import 'package:baking_timer/views/widgets/create_edit_timers/timer_name_card.dart';
-import 'package:baking_timer/views/widgets/create_edit_timers/timer_settings_card.dart';
+import 'package:baking_timer/views/widgets/intervals_timer_edition_widgets/timer_name_card.dart';
+import 'package:baking_timer/views/widgets/intervals_timer_edition_widgets/timer_settings_card.dart';
 
 enum CardActivities { timer, pause, repeats }
 enum CardActions { plus, minus }

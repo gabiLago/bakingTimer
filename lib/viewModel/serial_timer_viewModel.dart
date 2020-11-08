@@ -42,9 +42,9 @@ class SerialTimerViewModel extends ChangeNotifier {
 
   Duration oneSec = const Duration(seconds: 1);
 
-  Map<CountdownTimerNeeded, CountdownTimerNeeded> countdownTimersSwitcher = {
-    CountdownTimerNeeded.activity: CountdownTimerNeeded.pause,
-    CountdownTimerNeeded.pause: CountdownTimerNeeded.activity,
+  Map<CountdownNeeded, CountdownNeeded> countdownTimersSwitcher = {
+    CountdownNeeded.activity: CountdownNeeded.pause,
+    CountdownNeeded.pause: CountdownNeeded.activity,
   };
 
   void runIntervalsTimer(IntervalsTimer timer) {
@@ -62,15 +62,14 @@ class SerialTimerViewModel extends ChangeNotifier {
   }
 
   void runCountdownTimerNeededOnInterval(IntervalsTimer intervalsTimer) {
-    CountdownTimer countdown = intervalsTimer.getCountdownTimerOnInterval();
+    CountdownTimer countdown = intervalsTimer.getCountdownTimerNeeded();
 
     intervalsTimer.timer = Timer.periodic(oneSec, (timer) {
       countdown.incrementCount();
 
       if (countdown.duration - countdown.getActualCount() <= 0) {
-        intervalsTimer.updateCountdownTimerNeededOnInterval(
-          countdownTimersSwitcher[
-              intervalsTimer.getCountdownTimerNeededOnInterval()],
+        intervalsTimer.updateWhichCountdownNeeded(
+          countdownTimersSwitcher[intervalsTimer.getWhichCountdownNeeded()],
         );
 
         timer.cancel();

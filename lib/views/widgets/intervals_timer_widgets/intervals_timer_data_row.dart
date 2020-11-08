@@ -1,7 +1,7 @@
 import 'package:baking_timer/models/intervals_timer_model.dart';
 import 'package:baking_timer/models/timers_enums.dart';
-import 'package:baking_timer/views/widgets/show_timers/intervals_timer_separator_block.dart';
-import 'package:baking_timer/views/widgets/show_timers/intervals_timer_target_block.dart';
+import 'package:baking_timer/views/widgets/intervals_timer_widgets/intervals_timer_separator_block.dart';
+import 'package:baking_timer/views/widgets/intervals_timer_widgets/intervals_timer_target_block.dart';
 import 'package:flutter/material.dart';
 
 class TimerDataRow extends StatelessWidget {
@@ -15,12 +15,12 @@ class TimerDataRow extends StatelessWidget {
         children: <Widget>[
           IntervalsTimerTargets(
             intervalsTimer: timer,
-            countdownTimer: CountdownTimerNeeded.activity,
+            countdownTimer: CountdownNeeded.activity,
           ),
           IntervalsTimerSeparator(timer),
           IntervalsTimerTargets(
             intervalsTimer: timer,
-            countdownTimer: CountdownTimerNeeded.pause,
+            countdownTimer: CountdownNeeded.pause,
           ),
         ],
       ),

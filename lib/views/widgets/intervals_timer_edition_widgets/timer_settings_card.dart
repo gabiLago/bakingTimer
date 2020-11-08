@@ -1,5 +1,5 @@
 import 'package:baking_timer/views/screens/add_timer_screen.dart';
-import 'package:baking_timer/views/widgets/create_edit_timers/round_icon_button.dart';
+import 'package:baking_timer/views/widgets/intervals_timer_edition_widgets/round_icon_button.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 

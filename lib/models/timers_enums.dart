@@ -5,7 +5,7 @@ enum TimerState {
   finished,
 }
 
-enum CountdownTimerNeeded {
+enum CountdownNeeded {
   activity,
   pause,
 }
