@@ -10,17 +10,31 @@ class TimerDataRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
+    bool isFullSize = timer.currentIntervalsTimerState() == TimerState.idle ||
+            timer.currentIntervalsTimerState() == TimerState.finished
+        ? true
+        : false;
+
+    return Container(
+      width: MediaQuery.of(context).size.width * (isFullSize ? 0.5 : 0.2),
+      decoration: BoxDecoration(),
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
           IntervalsTimerTargets(
             intervalsTimer: timer,
             countdownTimer: CountdownNeeded.activity,
+            fullSize: isFullSize,
           ),
-          IntervalsTimerSeparator(timer),
+          IntervalsTimerSeparator(
+            timer: timer,
+            fullSize: isFullSize,
+          ),
           IntervalsTimerTargets(
             intervalsTimer: timer,
-            countdownTimer: CountdownNeeded.pause,
+            countdownTimer: CountdownNeeded.waiting,
+            fullSize: isFullSize,
           ),
         ],
       ),

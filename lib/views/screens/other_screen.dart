@@ -1,4 +1,4 @@
-import 'package:baking_timer/viewModel/serial_timer_viewModel.dart';
+import 'package:baking_timer/viewModel/intervals_timer_viewModel.dart';
 import 'package:baking_timer/localization/localized_strings.dart';
 import 'package:baking_timer/views/screens/timers_screen.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +13,7 @@ class OtherScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     String currentLanguage =
-        Provider.of<SerialTimerViewModel>(context).getCurrentLanguage();
+        Provider.of<IntervalsTimerViewModel>(context).getCurrentLanguage();
     return Scaffold(
       floatingActionButton: FloatingActionButton(onPressed: () {
         Navigator.pushNamed(context, TimersScreen.id);

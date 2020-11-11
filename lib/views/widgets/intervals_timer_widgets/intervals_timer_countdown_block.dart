@@ -9,14 +9,16 @@ class CountdownRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    int totalSeconds = timer.getCountdownTimerNeeded().getActualCount();
+    int totalSeconds = timer.countdownTimerNeeded().getActualCount();
 
-    return Container(
-      child: Text(
-        '${Duration(seconds: totalSeconds).toHoursMinutesSeconds()}',
-        style: timer.getWhichCountdownNeeded() == CountdownNeeded.activity
-            ? Theme.of(context).textTheme.headline4
-            : Theme.of(context).textTheme.headline5,
+    return Center(
+      child: Container(
+        child: Text(
+          '${Duration(seconds: totalSeconds).toHoursMinutesSeconds()}',
+          style: timer.whichCountdownNeeded() == CountdownNeeded.activity
+              ? Theme.of(context).textTheme.headline4
+              : Theme.of(context).textTheme.headline5,
+        ),
       ),
     );
   }

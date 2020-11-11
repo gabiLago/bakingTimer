@@ -4,7 +4,7 @@ BoxDecoration kTimerCardDecoration(context) => BoxDecoration(
     borderRadius: BorderRadius.circular(10.0),
     color: Theme.of(context).backgroundColor);
 
-BoxDecoration kNameAndRepeatesDecoration(context) => BoxDecoration(
+BoxDecoration kFirstRow(context) => BoxDecoration(
       border: Border(
         bottom: BorderSide(
           color: Theme.of(context).scaffoldBackgroundColor,

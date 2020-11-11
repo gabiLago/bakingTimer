@@ -21,19 +21,23 @@ class IntervalsTimer {
   });
 
   void incrementIntervalsCount() => _count++;
-  void updateIntervalsTimerState(TimerState timerState) =>
-      _timerState = timerState;
+  void updateTimerState(TimerState timerState) => _timerState = timerState;
   void updateWhichCountdownNeeded(CountdownNeeded timerNeeded) =>
       _countdownTimerNeeded = timerNeeded;
   void stopIntervalsTimer() => timer.cancel();
+  void resetIntervalsTimerCounters() {
+    _count = 0;
+    activityTimer.resetCounter();
+    waitingTimer.resetCounter();
+  }
 
-  int getIntervalsCount() => _count;
-  TimerState getIntervalsTimerState() => _timerState;
-  CountdownTimer getCountdownTimerNeeded() {
+  int intervalsCount() => _count;
+  TimerState currentIntervalsTimerState() => _timerState;
+  CountdownTimer countdownTimerNeeded() {
     return _countdownTimerNeeded == CountdownNeeded.activity
         ? activityTimer
         : waitingTimer;
   }
 
-  CountdownNeeded getWhichCountdownNeeded() => _countdownTimerNeeded;
+  CountdownNeeded whichCountdownNeeded() => _countdownTimerNeeded;
 }

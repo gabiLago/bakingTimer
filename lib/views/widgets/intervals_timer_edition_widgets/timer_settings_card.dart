@@ -19,8 +19,10 @@ class TimerSettingsCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(vertical: 5),
-      padding: EdgeInsets.all(10.0),
+      width: MediaQuery.of(context).size.width * 0.46,
+      margin: EdgeInsets.symmetric(
+          vertical: MediaQuery.of(context).size.width * 0.015),
+      padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.015),
       decoration: BoxDecoration(
         color: Colors.grey[800],
         borderRadius: BorderRadius.circular(10.0),

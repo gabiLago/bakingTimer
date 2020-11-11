@@ -10,23 +10,17 @@ class IntervalsTimerIntervals extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      crossAxisAlignment: CrossAxisAlignment.baseline,
       children: [
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.baseline,
-          children: [
-            Text(
-              'x ',
-              style: kRepeatsLabelStyle(context),
-            ),
-            Text(
-              timer.getIntervalsTimerState() == TimerState.idle
-                  ? '${timer.intervalsTarget}'
-                  : '${timer.getIntervalsCount()}/${timer.intervalsTarget}',
-              style: kRepeatsStyle,
-            ),
-          ],
+        Text(
+          'x ',
+          style: kRepeatsLabelStyle(context),
+        ),
+        Text(
+          timer.currentIntervalsTimerState() == TimerState.idle ||
+                  timer.currentIntervalsTimerState() == TimerState.finished
+              ? '${timer.intervalsTarget}'
+              : '${timer.intervalsCount() + 1}/${timer.intervalsTarget}',
+          style: kRepeatsStyle,
         ),
       ],
     );

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 ThemeData themeData = ThemeData.dark().copyWith(
   backgroundColor: Colors.grey[800],
-  accentColor: Colors.orange[200],
+  accentColor: Colors.green[400],
   textTheme: TextTheme(
     headline1: TextStyle(
       fontSize: 48.0,

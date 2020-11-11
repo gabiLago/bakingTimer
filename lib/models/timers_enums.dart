@@ -7,5 +7,5 @@ enum TimerState {
 
 enum CountdownNeeded {
   activity,
-  pause,
+  waiting,
 }
